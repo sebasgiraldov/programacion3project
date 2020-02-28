@@ -1,0 +1,34 @@
+<div >
+<nav>
+    <div class="nav-wrapper blue green">
+      <a routerLink="/" class="brand-logo">HogarColombia</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li ><a routerLink="/">Inicio</a></li>
+        <li *ngIf="!Admin"><a routerLink="product/home">Propiedades</a></li>
+        <li *ngIf="Cliente"><a routerLink="/solicitud-list">Solicitudes</a></li>
+        <li *ngIf="Admin"><a routerLink="admin/inicio/crear-asesor">Crear Asesor</a></li>
+        <li *ngIf="Admin"><a routerLink="admin/inicio/crear-ciudad">Crear Ciudad</a></li>
+        <li *ngIf="Admin"><a routerLink="admin/inicio/crear-tipo">Crear Tipo</a></li>
+        <li *ngIf="!Admin && !Asesor"><a routerLink="/contacto">Contacto</a></li>
+        <li *ngIf="!userLogged"><a routerLink="/user/register">Registrate</a></li>
+        <li *ngIf="!userLogged"><a routerLink="/user/login">Login</a></li>
+        <li *ngIf="userLogged"><a routerLink="/user/logout">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a routerLink="/">Inicio</a></li>
+    <li *ngIf="!Admin"><a routerLink="product/home">Propiedades</a></li>
+    <li *ngIf="Cliente"><a routerLink="/solicitud-list">Solicitudes</a></li>
+    <li *ngIf="Admin"><a routerLink="admin/inicio/crear-asesor">Crear Asesor</a></li>
+    <li *ngIf="Admin"><a routerLink="admin/inicio/crear-ciudad">Crear Ciudad</a></li>
+    <li *ngIf="Admin"><a routerLink="admin/inicio/crear-tipo">Crear Tipo</a></li>
+    <li *ngIf="!Admin && !Asesor"><a routerLink="/contacto">Contacto</a></li>
+    <li *ngIf="!userLogged"><a routerLink="/user/register">Registrate</a></li>
+    <li *ngIf="!userLogged"><a routerLink="/user/login">Login</a></li>
+    <li *ngIf="userLogged"><a routerLink="/user/logout">Logout</a></li>
+  </ul>
+
+</div>

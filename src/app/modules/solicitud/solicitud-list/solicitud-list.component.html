@@ -1,0 +1,135 @@
+<br />
+<div class="row">
+<div class="col m5"></div>
+<div class="col m2">
+<a routerLink="/product/home" class="waves-effect waves-light green btn center-align">Agregar Solicitud</a>
+</div>
+<div class="col m5"></div>
+</div>
+    <br />
+<br />
+<div class="row" *ngIf="mostrar">
+    <div class="col m2"></div>
+    <div class="col m8">
+<table class="responsive-table" >
+    <thead>
+        <tr>
+            <th style="width: 17%">
+                Tipo Solicitud 
+            </th>
+            <th style="width: 17%">
+                Tipo inmueble
+            </th>
+            <th style="width: 17%">
+                Direccion
+            </th >
+            <th>
+                Valor
+            </th>
+            <th style="width: 17%">
+                Estado
+            </th>
+            <th style="width: 17%">
+                Imagen
+            </th>
+            <th>
+                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of solicitudes">
+            <td *ngIf="p.tipo_solicitud == 2">
+                Arrendamiento
+            </td>
+            <td *ngIf="p.tipo_solicitud == 1">
+                Compra
+           </td>
+            <td>
+                {{p.tipo_inmueble}}
+            </td>
+            <td>
+                {{p.direccion}}
+            </td>
+            <td>
+                {{p.valor}}
+            </td>
+            <td *ngIf="p.estado_solicitud == 1">
+                Enviado
+            </td>
+            <td *ngIf="p.estado_solicitud == 2">
+                En Estudio
+            </td>
+            <td *ngIf="p.estado_solicitud == 3">
+                <button class="btn waves-effect waves-light green accent-3" type="button" name="action"
+                (click)="openComentarios(p.id)" *ngIf="p.estado_solicitud != 1">Aceptado
+                </button>
+            </td>
+            <td *ngIf="p.estado_solicitud == 4">
+                <button class="btn waves-effect waves-light  deep-orange lighten-2" type="button" name="action"
+                (click)="openComentarios(p.id)" *ngIf="p.estado_solicitud != 1 ">Rechazado
+                </button>
+            </td>
+            <td>
+               <img src="{{p.foto}}" (click)="openImage(p.foto)" style="width: 80%;" alt="image" />
+            </td>
+            <div id="modalImagen" class="modal" style="height: 80%;">
+                <div class="modal-content center-align">
+                    <h4>¡Esta esperando por ti!</h4>
+                    <img src="{{foto}}" style="width:70%; height: 70%; " alt="image" /> 
+                    <br>
+        <a class="modal-close waves-effect waves-light btn red">Salir</a> &nbsp;
+                </div>
+            </div>
+            <td>
+                <button class="btn waves-effect waves-light red" type="button" name="action"
+                (click)="openConfirmation(p.id)" *ngIf="p.estado_solicitud == 1">Eliminar
+                </button>
+                <button class="btn waves-effect waves-light green" type="button" name="action"
+                (click)="openDetalles(p.id)" *ngIf="p.estado_solicitud != 1">Detalles
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="modalConfirmation" class="modal">
+    <div class="modal-content">
+        <h4>¡Espera!</h4>
+        <p>¿Estas seguro que deseas eliminar este elemento?</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-light btn red">Cancelar</a> &nbsp;
+        <a class="modal-close waves-effect waves-light btn green" (click)="removeElement()">Confirmar</a>
+    </div>
+</div>
+<div id="modalDetalles" class="modal">
+    <div class="modal-content center-align" *ngIf="solicitud != undefined">
+        <h4>{{solicitud.tipo_inmueble}}</h4>
+        <br>
+        <h6>*Direccion: {{solicitud.direccion}}</h6>
+        <h6>*Valor: {{solicitud.valor}}</h6>
+        <img src="{{solicitud.foto}}" alt="" width="40%" height="40%">
+        <br><br>
+        <a class="modal-close waves-effect waves-light btn red">Salir</a> &nbsp;
+    </div>
+</div>
+<div id="modalComentarios" class="modal">
+    <div class="modal-content center-align" >
+        <h4>Comentarios:</h4>
+        <br>
+        <h6>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h6>
+        <br>
+        <br>
+        <a class="modal-close waves-effect waves-light btn grey darken-1" >Descargar</a>
+    <br><br><br><br><br><br>
+        <a class="modal-close waves-effect waves-light btn red">Salir</a> &nbsp;
+        
+    </div>
+</div>
+</div>
+</div>
+<div class="row center-align" *ngIf="!mostrar">
+    <h4>¡Hey!, Aún no tienes solicitudes agregadas!</h4>
+</div>
+<br> <br><br><br>

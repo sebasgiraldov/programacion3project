@@ -1,0 +1,20 @@
+<div class="row s12 center">
+    <div class="card col s6 center">
+        <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{{product.image}}">
+        </div>
+        <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">{{product.name}}<i
+                    class="material-icons right">more_vert</i></span>
+        </div>
+        <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{product.name}}<i
+                    class="material-icons right">close</i></span>
+            <p>{{product.price | currency}}</p>
+            <p><a href="{{product.providerLink}}" target="_blank">Visitar Proveedor</a></p>
+            <p>tipo: {{product.tipo}}</p>
+            <p>{{product.telefono}}</p>
+            <p>{{product.direccion}}</p>
+        </div>
+    </div>
+</div>

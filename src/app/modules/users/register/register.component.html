@@ -1,0 +1,69 @@
+<h1 class="center-align">Registro</h1>
+
+<div class="row center">
+  <div class="z-depth-3 y-depth-3 x-depth-3 grey green-text lighten-4 row"
+        style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px; margin-top: 100px; width: 80%;">
+  <form [formGroup]="fgValidation" (ngSubmit)="registerEvent()" class="register-form">
+    <div class="row">
+      <div class='input-field col s12'>
+        <input class="validate" formControlName="name" id="name" type="text"  placeholder="Nombre" />
+        <div class="warning-validation" *ngIf="fg.name.errors && (fg.name.dirty || fg.name.touched)">
+            <strong *ngIf="fg.name.errors.required">
+                Name is required!<br />
+            </strong>
+            </div>
+        </div>
+      </div>
+<div class="row">
+  <div class='input-field col s12'>
+    <input class="validate" formControlName="username" id="username" type="text"  placeholder="Nombre de usuario"/>
+    <div class="warning-validation" *ngIf="fg.username.errors && (fg.username.dirty || fg.username.touched)">
+        <strong *ngIf="fg.username.errors.required">
+            Username is required!<br />
+        </strong>
+        </div>
+    </div>
+</div>
+<div class="row">
+  <div class='input-field col s12'>
+    <input class="validate" formControlName="email" id="email" type="email"  placeholder="Email"/>
+    <div class="warning-validation" *ngIf="fg.email.errors && (fg.email.dirty || fg.email.touched)">
+        <strong *ngIf="fg.email.errors.required">
+            email is required!<br />
+        </strong>
+        <strong *ngIf="fg.email.errors.email">
+            email must be an email!
+        </strong>
+      </div>
+    </div>
+</div>
+<div class="row">
+  <div class='input-field col m12'>
+    <input class="validate" type='password' formControlName="password" id='password' placeholder="Contraseña"/>
+    <div class="warning-validation" *ngIf="fg.password.errors && (fg.password.dirty || fg.password.touched)">
+        <strong *ngIf="fg.password.errors.required">
+            password is required!<br />
+        </strong>
+        <strong *ngIf="fg.password.errors.minlength">
+            password must be at least 3 characters long!<br />
+        </strong>
+        <strong *ngIf="fg.password.errors.maxlength">
+            password must be up to 25 characters long!<br />
+        </strong>
+      </div>
+    </div>
+</div>
+<div class="col m4"></div>
+<div class="row center-align col m4">
+  <re-captcha (resolved)="resolved($event)" siteKey="6LfaN7AUAAAAAEg4G67MXj6fsZE1psStk7PrSJVy"></re-captcha>
+</div>
+<div class="col m4"></div>
+<div class='row'>
+  <div class='input-field col m12'>
+  <button  
+  class='btn green col s12' type="submit">Registrarme</button>
+  </div>
+</div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="center-align">
+  <h4>Filtrar:</h4>
+  <br>
+  <a class='btn green col s12 btn-large' href="/product/home#venta">Venta</a>
+  &nbsp;&nbsp;&nbsp;
+  <a class='btn green btn-large' href="/product/home#renta">Renta </a>       
+</div>
+
+
+
+<div id="venta">
+<h3>En Venta:</h3>
+
+<div class="row s12">
+    <div *ngFor="let p of listaVenta" class="card col s4">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="{{p.image}}" style="width: 100%; height: 250px;">
+          <span class="card-title activator white-text text-darken-4">${{p.price}}</span>
+        </div>
+        <div class="card-content">
+          <h5 class="">{{p.name}}<i class="material-icons right">more_vert</i></h5>
+          <hr>
+          <span class="" *ngIf="p.category == 1">En Venta</span>
+          <hr>
+          <span class="">Precio: ${{p.price}}</span>
+          <br>
+          <span class="">Direccion: {{p.direccion}}</span>
+          <br>
+          <span class="">Telefono: {{p.telefono}}</span>
+          <br><br>
+          <p><a routerLink="/solicitud/{{p.id}}" *ngIf="sessionCliente">Solicitar</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{p.name}}<i class="material-icons right">close</i></span>
+          <p>{{p.price | currency}}</p>
+        </div>
+      </div>
+</div>
+</div>
+<hr>
+
+<div id="renta">
+
+<h3>En Renta:</h3>
+
+<div class="row s12">
+    <div *ngFor="let p of listaRenta" class="card col s4">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="{{p.image}}" style="width: 100%; height: 250px;">
+          <span class="card-title activator white-text text-darken-4">${{p.price}}</span>
+        </div>
+        <div class="card-content">
+          <h5 class="">{{p.name}}<i class="material-icons right">more_vert</i></h5>
+          <hr>
+          <span class="" *ngIf="p.category == 2">En Arriendo</span>
+          <hr>
+          <span class="">Precio: ${{p.price}}</span>
+          <br>
+          <span class="">Direccion: {{p.direccion}}</span>
+          <br>
+          <span class="">Telefono: {{p.telefono}}</span>
+          <br><br>
+          <p><a routerLink="/solicitud/{{p.id}}" *ngIf="sessionCliente">Solicitar</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{p.name}}<i class="material-icons right">close</i></span>
+          <p>{{p.price | currency}}</p>
+        </div>
+      </div>
+</div>
+
+</div>
