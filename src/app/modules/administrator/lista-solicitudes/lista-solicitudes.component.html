@@ -1,19 +1,12 @@
-<br />
-<div class="row">
-<div class="col m5"></div>
-<div class="col m2">
-<a routerLink="/product/home" class="waves-effect waves-light green btn center-align">Agregar Solicitud</a>
-</div>
-<div class="col m5"></div>
-</div>
-    <br />
-<br />
 <div class="row" *ngIf="mostrar">
     <div class="col m2"></div>
     <div class="col m8">
 <table class="responsive-table" >
     <thead>
         <tr>
+            <th style="width: 17%">
+                Codigo 
+            </th>
             <th style="width: 17%">
                 Tipo Solicitud 
             </th>
@@ -26,14 +19,8 @@
             <th style="width: 17%">
                 Ciudad
             </th >
-            <th>
-                Valor
-            </th>
             <th style="width: 17%">
                 Estado
-            </th>
-            <th style="width: 17%">
-                Imagen
             </th>
             <th>
                 
@@ -42,6 +29,9 @@
     </thead>
     <tbody>
         <tr *ngFor="let p of solicitudes">
+            <td>
+                {{p.id}}
+            </td>
             <td *ngIf="p.tipo_solicitud == 2">
                 Arrendamiento
             </td>
@@ -55,10 +45,7 @@
                 {{p.direccion}}
             </td>
             <td>
-                {{p.ciudad}}
-            </td>
-            <td>
-                {{p.valor}}
+                {{p.Ciudad}}
             </td>
             <td *ngIf="p.estado_solicitud == 1">
                 Enviado
@@ -77,19 +64,8 @@
                 </button>
             </td>
             <td>
-               <img src="{{p.foto}}" (click)="openImage(p.foto)" style="width: 80%;" alt="image" />
-            </td>
-            <div id="modalImagen" class="modal" style="height: 80%;">
-                <div class="modal-content center-align">
-                    <h4>¡Esta esperando por ti!</h4>
-                    <img src="{{foto}}" style="width:70%; height: 70%; " alt="image" /> 
-                    <br>
-        <a class="modal-close waves-effect waves-light btn red">Salir</a> &nbsp;
-                </div>
-            </div>
-            <td>
-                <button class="btn waves-effect waves-light red" type="button" name="action"
-                (click)="openConfirmation(p.id)" *ngIf="p.estado_solicitud == 1">Eliminar
+                <button class="btn waves-effect waves-light blue" type="button" name="action"
+                (click)="openConfirmation(p.id)" *ngIf="p.estado_solicitud == 1">Asignar
                 </button>
                 <button class="btn waves-effect waves-light green" type="button" name="action"
                 (click)="openDetalles(p.id)" *ngIf="p.estado_solicitud != 1">Detalles
@@ -102,11 +78,11 @@
 <div id="modalConfirmation" class="modal">
     <div class="modal-content">
         <h4>¡Espera!</h4>
-        <p>¿Estas seguro que deseas eliminar este elemento?</p>
-    </div>
-    <div class="modal-footer">
-        <a class="modal-close waves-effect waves-light btn red">Cancelar</a> &nbsp;
-        <a class="modal-close waves-effect waves-light btn green" (click)="removeElement()">Confirmar</a>
+        <p>¿Quieres asignar otro asesor para esta solicitud?</p>
+        <br>
+        <h5>Seleccione un asesor:</h5>
+        <a class="modal-close waves-effect waves-light btn black" style="margin: 2%;" *ngFor="let x of asesores" 
+            (click)="editElement(x.id)">{{x.realm}}</a> 
     </div>
 </div>
 <div id="modalDetalles" class="modal">
@@ -121,13 +97,13 @@
     </div>
 </div>
 <div id="modalComentarios" class="modal">
-    <div class="modal-content center-align" *ngIf="solicitud != undefined">
+    <div class="modal-content center-align" >
         <h4>Comentarios:</h4>
         <br>
-        <h6>*{{solicitud.comentarios}}...</h6>
+        <h6>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h6>
         <br>
         <br>
-        <a class="modal-close waves-effect waves-light btn blue" *ngIf="solicitud.comentarios != 'No hay comentarios'">Descargar</a>
+        <a class="modal-close waves-effect waves-light btn grey darken-1" >Descargar</a>
     <br><br><br><br><br><br>
         <a class="modal-close waves-effect waves-light btn red">Salir</a> &nbsp;
         

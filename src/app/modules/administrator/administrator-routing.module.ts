@@ -5,6 +5,7 @@ import { AuthenticationRequiredGuard } from 'src/app/helpers/guards/authenticati
 import { InicioComponent } from './inicio/inicio.component';
 import { CrearCiudadComponent } from './crear-ciudad/crear-ciudad.component';
 import { CrearTipoComponent } from './crear-tipo/crear-tipo.component';
+import { ListaSolicitudesComponent } from './lista-solicitudes/lista-solicitudes.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path:'admin/inicio/crear-tipo',
     component: CrearTipoComponent,
+    canActivate: [AuthenticationRequiredGuard]
+  },
+  {
+    path:'admin/inicio/lista-solicitudes',
+    component: ListaSolicitudesComponent,
     canActivate: [AuthenticationRequiredGuard]
   }
 ];

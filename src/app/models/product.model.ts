@@ -6,6 +6,7 @@ export interface ProductModel{
     category: string;
     price: number;
     tipo: string;
+    ciudad: string;
     direccion: string;
     image: string;
     disponible: boolean;

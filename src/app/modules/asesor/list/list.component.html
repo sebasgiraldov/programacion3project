@@ -1,0 +1,151 @@
+<br />
+<div class="row">
+<div class="col m5"></div>
+<div class="col m2">
+<a routerLink="/asesor/crear" class="waves-effect waves-light green btn center-align">Agregar Inmueble</a>
+</div>
+<div class="col m5"></div>
+</div>
+    <br />
+<br />
+<div class="row" *ngIf="mostrar">
+    <div class="col m1"></div>
+    <div class="col m10">
+<table class="responsive-table" >
+    <thead>
+        <tr>
+            <th style="width: 17%">
+                Telefono 
+            </th>
+            <th style="width: 17%">
+                Nombre
+            </th>
+            <th style="width: 17%">
+                 Categoria
+            </th >
+            <th>
+                Precio
+            </th>
+            <th>
+                Tipo
+            </th>
+            <th>
+                Ciudad
+            </th>
+            <th>
+                Direccion
+            </th>
+            <th style="width: 17%">
+                Disponible:
+            </th>
+            <th style="width: 17%">
+                Imagen
+            </th>
+            <th>
+                
+            </th>
+            <th>
+                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of productos">
+            <td>
+            {{p.telefono}}
+            </td>
+            <td>
+            {{p.name}}
+           </td>
+            <td *ngIf="p.category == 1">
+                Venta
+            </td>
+            <td *ngIf="p.category == 2">
+                Renta
+            </td>
+            <td>
+                {{p.price}}
+            </td>
+            <td>
+                {{p.tipo}}
+            </td>
+            <td>
+                {{p.ciudad}}
+            </td>
+            <td>
+                {{p.direccion}}
+            </td>
+            <td *ngIf="p.disponible == true">
+                Si
+            </td>
+            <td *ngIf="p.disponible == false">
+                No
+            </td>
+            <td>
+               <img [src]="p.image" (click)="openImage(p.image)" style="width: 80%;" alt="image" />
+            </td>
+            <div id="modalImagen" class="modal" style="height: 80%;">
+                <div class="modal-content center-align">
+                    <h4>¡Esta esperando por ti!</h4>
+                    <img [src]="p.image" style="width:70%; height: 70%; " alt="image" /> 
+                    <br>
+        <a class="modal-close waves-effect waves-light btn red">Salir</a> &nbsp;
+                </div>
+            </div>
+            <td>
+                <button class="btn waves-effect waves-light blue" type="button" name="action"
+                (click)="openConfirmation2(p.id)" *ngIf="p.disponible==true">Editar
+                </button>
+            </td>
+            <td>
+                <button class="btn waves-effect waves-light red" type="button" name="action"
+                (click)="openConfirmation(p.id)" *ngIf="p.disponible==true">Eliminar
+                </button>
+            </td>
+            
+        </tr>
+    </tbody>
+</table>
+
+<div id="modalConfirmation" class="modal">
+    <div class="modal-content">
+        <h4>¡Espera!</h4>
+        <p>¿Estas seguro que deseas eliminar este elemento?</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-light btn red">Cancelar</a> &nbsp;
+        <a class="modal-close waves-effect waves-light btn green" (click)="removeElement()">Confirmar</a>
+    </div>
+</div>
+
+
+
+<div id="modalConfirmation2" class="modal">
+    <div class="modal-content">
+        <h4>Editar</h4>
+        
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-light btn red">Cancelar</a> &nbsp;
+        <a class="modal-close waves-effect waves-light btn green" (click)="editElement()">Confirmar</a>
+    </div>
+</div>
+
+
+<div id="modalDetalles" class="modal">
+    <div class="modal-content center-align" *ngIf="producto != undefined">
+         <h4>{{producto.tipo}}</h4>
+        <br>
+        <h6>*Direccion: {{producto.direccion}}</h6>
+        <h6>*Valor: {{producto.price}}</h6>
+        <img src="{{producto.image}" alt="" width="40%" height="40%">
+        <br><br>
+        <a class="modal-close waves-effect waves-light btn red">Salir</a> &nbsp;
+    </div>
+</div>
+</div>
+</div>
+<div class="row center-align" *ngIf="!mostrar">
+    <h4>¡Hey!, Aún no tienes inmuebles agregados!</h4>
+</div>
+<br> <br><br><br>

@@ -39,6 +39,15 @@ export class UserService {
     });
   }
 
+  findById(id :String):Observable<UserModel>{
+    return this.http.get<UserModel>(`${base_url}Users/findOne/?filter[where][id]=${id}`,{
+      headers: new HttpHeaders({
+        "content-type": "application/json"
+      })
+    });
+  }
+
+
     //find by rol
   findByRol(rol:number):Observable<UserModel[]>{
     let filter = JSON.stringify({"where":{'rol': rol }});

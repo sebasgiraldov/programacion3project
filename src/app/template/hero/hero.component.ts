@@ -11,8 +11,9 @@ export class HeroComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    if(this.cliente != null){
     this.sess();
-    this.validar();
+    this.validar();}
   }
 
 cliente = JSON.parse(localStorage.getItem("activeUser"));
@@ -22,9 +23,16 @@ validar(){
   if(this.cliente.rol == 3){
     this.router.navigate(['admin/inicio']);
   }
+  if(this.cliente.rol == 2){
+    this.router.navigate(['asesor']);
+  }
+ 
 }
 
+
+
  sess(): void{
+  
   if(this.cliente.id != ''){
     this.ses= true;
   }

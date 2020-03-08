@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tipoInmModel } from '../models/tipoInm.model';
 import { ciudadesModel } from '../models/ciudades.model';
+import { ProductModel } from '../models/product.model';
 
 
 
@@ -46,5 +47,24 @@ export class CrearService {
     return this.http.get<tipoInmModel[]>(`${this.url}/tipoInms`);
   }
 
+  crearProducto(telefono:String, name: String, aggregadoby:String, category:String, 
+    price:Number, tipo:String, ciudad:String, direccion:String, image:String ):Observable<ProductModel> {
+    return this.http.post<ProductModel>(`${this.url}/Products`, {
+      telefono :telefono,
+      name : name,
+      aggregadoby :aggregadoby,
+      category:category,
+      price:price,
+      tipo:tipo,
+      ciudad:ciudad,
+      direccion:direccion,
+      image:image,
+      disponible:true
+
+    }, {headers: new HttpHeaders ({
+      "content-type": "application/json"
+    })
+     })
+  }
 
 }

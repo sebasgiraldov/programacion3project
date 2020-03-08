@@ -20,6 +20,7 @@ export class ProdutDetailsComponent implements OnInit {
     category: null,
     price: null,
     tipo: null,
+    ciudad: null,
     direccion: null,
     image: null,
     disponible: null,

@@ -18,7 +18,7 @@ export class ProductService {
   }
 
 
-  getProductById(productId: string) : Observable<ProductModel>{
+  getProductById(productId: String) : Observable<ProductModel>{
     return this.http.get<ProductModel>(`${base_url}Products/${productId}`);
   }
 
@@ -29,6 +29,10 @@ export class ProductService {
         "content-type": "application/json"
       })
     });
+  }
+  getProductosById(id: String) : Observable<ProductModel[]>{
+    return this.http.get<ProductModel[]>(`${base_url}Products/findOne/?filter{where}{id}=${id}`);
+    
   }
 
   updateProduct(product: ProductModel): Observable<ProductModel>{
@@ -42,5 +46,9 @@ export class ProductService {
 
   deleteProduct(productId: ProductModel): Observable<ProductModel>{
     return this.http.delete<ProductModel>(`${base_url}Product/${productId}`);
+  }
+
+  deleteProducto(id: String) :Observable<ProductModel>{
+    return this.http.delete<ProductModel>(`http://localhost:3000/api/products/${id}`)
   }
 }

@@ -1,14 +1,15 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, {});
- 
- 
-  });
-  function initMaterializeSelect(){
-    // select
-    var elems = document.querySelectorAll('select');
-    
-    var instances = M.FormSelect.init(elems, {});
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems, {});
+});
+
+
+function initMaterializeSelect() {
+  // select
+  //alert('desde la inicialización del select')
+  var elems = document.querySelectorAll('select');
+  console.log(elems)
+  var instances = M.FormSelect.init(elems, {});
 }
 
 function openPlatformModalMessage(message) {
@@ -18,6 +19,14 @@ function openPlatformModalMessage(message) {
 
 function openConfirmationModal() {
   openModal("modalConfirmation")
+}
+
+function openConfirmationModal2() {
+  openModal("modalConfirmation2")
+}
+
+function openAsignarModal() {
+  openModal("modalAsignar")
 }
 
 function openImagenModal() {

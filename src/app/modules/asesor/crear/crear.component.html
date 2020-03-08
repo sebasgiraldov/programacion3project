@@ -1,0 +1,120 @@
+<div class="row center">
+  <div class="z-depth-3 y-depth-3 x-depth-3 grey green-text lighten-4 row"
+    style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px; margin-top: 100px; width: 60%;">
+    <form [formGroup]="fgValidation" (ngSubmit)="registerEvent()" class="register-form">
+      <h1 class="center-align">Crear inmueble.</h1>
+    
+
+      <div class="row">
+        <div class='input-field col s12'>
+          <input class="validate" formControlName="nombre" id="name" type="text" placeholder="Nombre inmueble" />
+          <div class="warning-validation" *ngIf="fg.nombre.errors && (fg.nombre.dirty || fg.nombre.touched)">
+            <strong *ngIf="fg.name.errors.required">
+              Name is required!<br />
+            </strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class='input-field col s12'>
+          <input class="validate" formControlName="telefono" id="telefono" type="text" placeholder="Telefono" />
+          <div class="warning-validation" *ngIf="fg.telefono.errors && (fg.telefono.dirty || fg.telefono.touched)">
+            <strong *ngIf="fg.telefono.errors.required">
+              telefono is required!<br />
+            </strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class='input-field col s12'>
+          <input class="validate" formControlName="direccion" id="direccion" type="text" placeholder="Direccion" />
+          <div class="warning-validation" *ngIf="fg.direccion.errors && (fg.direccion.dirty || fg.direccion.touched)">
+            <strong *ngIf="fg.direccion.errors.required">
+              direccion is required!<br />
+            </strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class='input-field col s12'>
+          <input class="validate" formControlName="precio" id="precio" type="number" placeholder="Precio" />
+          <div class="warning-validation" *ngIf="fg.precio.errors && (fg.precio.dirty || fg.precio.touched)">
+            <strong *ngIf="fg.precio.errors.required">
+              precio is required!<br />
+            </strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class='input-field col s12'>
+          <input class="validate" formControlName="imagen" id="imagen" type="text"
+            placeholder="Inserte url de la imagen" />
+          <div class="warning-validation" *ngIf="fg.imagen.errors && (fg.imagen.dirty || fg.imagen.touched)">
+            <strong *ngIf="fg.imagen.errors.required">
+              imagen is required!<br />
+            </strong>
+          </div>
+        </div>
+      </div>
+      <h6>Seleccione la categoria:</h6>
+      <div class="center-align">
+        <select class="input-field col s12" formControlName="category">
+          <option value="-1">Seleccione la categoria</option>
+          <option value="1">
+            Venta
+          </option>
+          <option value="2">
+            Arriendo
+          </option>
+        </select>
+      </div>
+      <br>
+      <h6>Seleccione tipo de vivienda:</h6>
+      <div class="center-align">
+        <select class="input-field col s12" formControlName="tipo">
+          <option value="-1">Seleccione el tipo de vivienda</option>
+          <option *ngFor="let p of tipos" value="{{p.nombre}}">
+            {{p.nombre}}
+          </option>
+        </select>
+       <!--<div *ngFor="let p of tipos" class="center-align">
+        <p>
+          <label>
+            <input class="validate, with-gap" value="{{p.nombre}}" name="group1" type="radio"
+              (click)="ExtraerTipo(value)" />
+            <span>{{p.nombre}}</span>
+          </label>
+        </p>-->
+      </div>
+      <br>
+      <h6>Seleccione Ciudad / departamento:</h6>
+      <div class="center-align">
+        <select class="input-field col s12" formControlName="ciudad">
+          <option value="-1">Seleccione la ciudad</option>
+          <option *ngFor="let p of ciudades" value="{{p.nombre}}">
+            {{p.nombre}}
+          </option>
+        </select>
+        <!--<p>
+              <label>
+                <input  class="validate, with-gap" value="{{p.nombre}}" name="group2" type="radio" (click)="ExtraerCiudad(value)" />
+                <span>{{p.nombre}}</span>
+              </label>
+            </p>-->
+      </div>
+
+
+      <div class="col m4"></div>
+      <div class="col m4"></div>
+      <div class='row'>
+        <div class='input-field col m12'>
+          <button class='btn green col s12' type="submit">crear inmueble</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

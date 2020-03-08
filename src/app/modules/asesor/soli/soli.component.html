@@ -2,7 +2,6 @@
 <div class="row">
 <div class="col m5"></div>
 <div class="col m2">
-<a routerLink="/product/home" class="waves-effect waves-light green btn center-align">Agregar Solicitud</a>
 </div>
 <div class="col m5"></div>
 </div>
@@ -15,26 +14,14 @@
     <thead>
         <tr>
             <th style="width: 17%">
-                Tipo Solicitud 
+                ID 
             </th>
             <th style="width: 17%">
-                Tipo inmueble
+                Ciudad
             </th>
             <th style="width: 17%">
                 Direccion
             </th >
-            <th style="width: 17%">
-                Ciudad
-            </th >
-            <th>
-                Valor
-            </th>
-            <th style="width: 17%">
-                Estado
-            </th>
-            <th style="width: 17%">
-                Imagen
-            </th>
             <th>
                 
             </th>
@@ -42,32 +29,27 @@
     </thead>
     <tbody>
         <tr *ngFor="let p of solicitudes">
-            <td *ngIf="p.tipo_solicitud == 2">
-                Arrendamiento
-            </td>
-            <td *ngIf="p.tipo_solicitud == 1">
-                Compra
-           </td>
             <td>
-                {{p.tipo_inmueble}}
-            </td>
-            <td>
-                {{p.direccion}}
+                {{p.id}}
             </td>
             <td>
                 {{p.ciudad}}
             </td>
             <td>
-                {{p.valor}}
+                {{p.direccion}}
             </td>
             <td *ngIf="p.estado_solicitud == 1">
-                Enviado
+                <button class="btn waves-effect waves-light green accent-3" type="button" name="action"
+                (click)="openConfirmation2(p.id)" *ngIf="p.estado_solicitud == 1">Estudiar
+                </button>
             </td>
             <td *ngIf="p.estado_solicitud == 2">
-                En Estudio
+                <button class="btn waves-effect waves-light blue accent-3" type="button" name="action"
+                (click)="openAsignar(p.id)" *ngIf="p.estado_solicitud == 2">Asignar
+                </button>
             </td>
             <td *ngIf="p.estado_solicitud == 3">
-                <button class="btn waves-effect waves-light green accent-3" type="button" name="action"
+                <button class="btn waves-effect waves-light gray" type="button" name="action"
                 (click)="openComentarios(p.id)" *ngIf="p.estado_solicitud != 1">Aceptado
                 </button>
             </td>
@@ -89,11 +71,9 @@
             </div>
             <td>
                 <button class="btn waves-effect waves-light red" type="button" name="action"
-                (click)="openConfirmation(p.id)" *ngIf="p.estado_solicitud == 1">Eliminar
+                (click)="openConfirmation(p.id)" >Eliminar
                 </button>
-                <button class="btn waves-effect waves-light green" type="button" name="action"
-                (click)="openDetalles(p.id)" *ngIf="p.estado_solicitud != 1">Detalles
-                </button>
+                
             </td>
         </tr>
     </tbody>
@@ -109,6 +89,32 @@
         <a class="modal-close waves-effect waves-light btn green" (click)="removeElement()">Confirmar</a>
     </div>
 </div>
+
+<div id="modalConfirmation2" class="modal">
+    <div class="modal-content">
+        <h4>¡Hey!</h4>
+        <p>¿Estas seguro que deseas estudiar esta solicitud?</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-light btn red">Cancelar</a> &nbsp;
+        <a class="modal-close waves-effect waves-light btn green" (click)="editElement(2)">Confirmar</a>
+    </div>
+</div>
+
+<div id="modalAsignar" class="modal">
+    <div class="modal-content">
+        <h4>¡Cuentanos que decisidiste!</h4><br><br>
+        <input class="validate"  id="comentarios" type="text" placeholder="Comentarios"  [(ngModel)]="comentarios"/>
+        <br><br>
+        <a class="modal-close waves-effect waves-light btn red" (click)="editElementt(4)">Rechazar</a> &nbsp;
+        <a class="modal-close waves-effect waves-light btn green" (click)="editElementt(3)">Aceptar</a>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-light btn red">Cancelar</a> &nbsp;
+    </div>
+</div>
+
+
 <div id="modalDetalles" class="modal">
     <div class="modal-content center-align" *ngIf="solicitud != undefined">
         <h4>{{solicitud.tipo_inmueble}}</h4>
@@ -124,10 +130,10 @@
     <div class="modal-content center-align" *ngIf="solicitud != undefined">
         <h4>Comentarios:</h4>
         <br>
-        <h6>*{{solicitud.comentarios}}...</h6>
+        <h6>{{solicitud.comentarios}}...</h6>
         <br>
         <br>
-        <a class="modal-close waves-effect waves-light btn blue" *ngIf="solicitud.comentarios != 'No hay comentarios'">Descargar</a>
+        <a class="modal-close waves-effect waves-light btn blue" >Descargar</a>
     <br><br><br><br><br><br>
         <a class="modal-close waves-effect waves-light btn red">Salir</a> &nbsp;
         
@@ -136,6 +142,6 @@
 </div>
 </div>
 <div class="row center-align" *ngIf="!mostrar">
-    <h4>¡Hey!, Aún no tienes solicitudes agregadas!</h4>
+    <h4>¡Hey!, Aún no tienes solicitudes pendientes!</h4>
 </div>
 <br> <br><br><br>

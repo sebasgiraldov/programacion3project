@@ -10,6 +10,7 @@ import { AcercaModule } from './modules/acerca/acerca.module';
 import { ContactoModule } from './modules/contacto/contacto.module';
 import { SolicitudModule } from './modules/solicitud/solicitud.module';
 import { AdministratorModule } from './modules/administrator/administrator.module';
+import { AsesorModule } from './modules/asesor/asesor.module';
 
 const routes: Routes = [
   {
@@ -36,7 +37,8 @@ const routes: Routes = [
     UsersModule,
     ContactoModule,
     SolicitudModule,
-    AdministratorModule
+    AdministratorModule,
+    AsesorModule
   ],
   exports: [RouterModule]
 })

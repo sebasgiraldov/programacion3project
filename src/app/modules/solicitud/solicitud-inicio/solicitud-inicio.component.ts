@@ -26,6 +26,7 @@ export class SolicitudInicioComponent implements OnInit {
     category: null,
     price: null,
     tipo: null,
+    ciudad: null,
     direccion: null,
     image: null,
     disponible: null,
@@ -39,18 +40,20 @@ export class SolicitudInicioComponent implements OnInit {
     let id = this.route.snapshot.params["id"];
     this.pdtService.getProductById(id).subscribe(item =>{
       this.product = item;
+      let id_inm = this.product.id;
       let id_cr = this.product.aggregadoby;
       let t = this.product.tipo;
       let c = this.product.category;
       let id_cl = this.cliente.id;
       let d = this.product.direccion;
+      let ciu = this.product.ciudad
       let valor = this.product.price;
       let f = "18-03-2020";
       let e = 1;
       let fot = this.product.image;
       let disp = this.product.disponible
       console.log("SOLICITUD",id_cr, t, c, id_cl, d, valor, f,e,fot);
-      this.solService.solicitar(c, t, id_cr, id_cl, d, valor, f,e,fot, disp).subscribe(data => {
+      this.solService.solicitar(id_inm, c, t, id_cr, id_cl, d, ciu, valor, f,e,fot, disp).subscribe(data => {
         if(data != null){
           console.log(data);
           this.router.navigate(['/solicitud-list']);

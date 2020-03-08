@@ -5,8 +5,12 @@
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li ><a routerLink="/">Inicio</a></li>
-        <li *ngIf="!Admin"><a routerLink="product/home">Propiedades</a></li>
+        <li *ngIf="Asesor"><a routerLink="asesor/solicitudes">Mis Solicitudes</a></li>
+        <li *ngIf="Asesor"><a routerLink="asesor/crear">Crear Inmueble</a></li>
+        <li *ngIf="Asesor"><a routerLink="asesor/list">Lista Inmuebles</a></li>
+        <li *ngIf="!Admin && !Asesor"><a routerLink="product/home">Propiedades</a></li>
         <li *ngIf="Cliente"><a routerLink="/solicitud-list">Solicitudes</a></li>
+        <li *ngIf="Admin"><a routerLink="admin/inicio/lista-solicitudes">Solicitudes</a></li>
         <li *ngIf="Admin"><a routerLink="admin/inicio/crear-asesor">Crear Asesor</a></li>
         <li *ngIf="Admin"><a routerLink="admin/inicio/crear-ciudad">Crear Ciudad</a></li>
         <li *ngIf="Admin"><a routerLink="admin/inicio/crear-tipo">Crear Tipo</a></li>
@@ -20,8 +24,12 @@
 
   <ul class="sidenav" id="mobile-demo">
     <li><a routerLink="/">Inicio</a></li>
-    <li *ngIf="!Admin"><a routerLink="product/home">Propiedades</a></li>
+    <li *ngIf="Asesor"><a routerLink="asesor/solicitudes">Mis Solicitudes</a></li>
+    <li *ngIf="Asesor"><a routerLink="asesor/crear">Crear Inmueble</a></li>
+    <li *ngIf="Asesor"><a routerLink="asesor/list">Lista Inmuebles</a></li>
+    <li *ngIf="!Admin && !Asesor"><a routerLink="product/home">Propiedades</a></li>
     <li *ngIf="Cliente"><a routerLink="/solicitud-list">Solicitudes</a></li>
+    <li *ngIf="Admin"><a routerLink="admin/inicio/lista-solicitudes">Solicitudes</a></li>
     <li *ngIf="Admin"><a routerLink="admin/inicio/crear-asesor">Crear Asesor</a></li>
     <li *ngIf="Admin"><a routerLink="admin/inicio/crear-ciudad">Crear Ciudad</a></li>
     <li *ngIf="Admin"><a routerLink="admin/inicio/crear-tipo">Crear Tipo</a></li>
