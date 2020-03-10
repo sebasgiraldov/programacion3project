@@ -131,8 +131,6 @@ export class SoliComponent implements OnInit {
     let text: String;
     if(x == 3){
       text = "Aceptada";
-      
-    
       //rechazar todas las solicitudes
       this.sol_to_change = this.sol_to_change.filter(x => x.id_propiedad == this.solicitud.id_propiedad && x.id != this.solicitud.id);
       for (let soli_ch of this.sol_to_change) {

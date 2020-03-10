@@ -7,12 +7,15 @@ import { ProdutCreatorComponent } from './admin/produt-creator/produt-creator.co
 import { ProdutEditorComponent } from './admin/produt-editor/produt-editor.component';
 import { ProdutHomeComponent } from './admin/produt-home/produt-home.component';
 import { ProdutDetailsComponent } from './admin/produt-details/produt-details.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ProductListComponent, ProdutCreatorComponent, ProdutEditorComponent, ProdutHomeComponent, ProdutDetailsComponent],
   imports: [
     CommonModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     ProductListComponent,

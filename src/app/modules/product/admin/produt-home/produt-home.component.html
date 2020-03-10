@@ -1,13 +1,89 @@
-<div class="center-align">
-  <h4>Filtrar:</h4>
-  <br>
-  <a class='btn green col s12 btn-large' href="/product/home#venta">Venta</a>
-  &nbsp;&nbsp;&nbsp;
-  <a class='btn green btn-large' href="/product/home#renta">Renta </a>       
+<div class="container">
+  <h1>Filtrar:</h1>
+  <form [formGroup]="fgValidation"  (ngSubmit)="filterEvent()" class="register-form"> 
+    <div class="row z-deepth-1">
+      <div class="col s4">
+        <h6>Seleccione la categoria:</h6>
+      <div class="center-align">
+        <select class="input-field col s12" formControlName="VarR">
+          
+          <option value="1">
+            Venta
+          </option>
+          <option value="2">
+            Arriendo
+          </option>
+        </select>
+      </div>
+      </div>
+      <div class="col s4">
+        <h6>Seleccione tipo de vivienda:</h6>
+      <div class="center-align">
+        <select class="input-field col s12" formControlName="HorA">
+          <option *ngFor="let p of tipos" value="{{p.nombre}}">
+            {{p.nombre}}
+          </option>
+        </select>
+        </div>
+      </div>
+      <div class="col s4">
+        <h6>Seleccione Ciudad / departamento:</h6>
+      <div class="center-align">
+        <select class="input-field col s12" formControlName="ciudad">
+          <option *ngFor="let p of ciudades" value="{{p.nombre}}">
+            {{p.nombre}}
+          </option>
+        </select>
+      </div>
+
+      </div>
+      <div class="col s5"></div>
+      <div class="col s2">
+      <button class="btn waves-effect waves-light button1 green" type="submit">Filtrar</button>
+      </div>
+      <div class="col s5"></div>
+    </div>
+  </form>
+</div>
+
+
+  <h3>Propiedades:</h3>
+  
+  <div class="row s12" *ngIf="verr">
+      <div *ngFor="let p of listaFiltrada" class="card col s4">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{{p.image}}" style="width: 100%; height: 250px;">
+            <span class="card-title activator white-text text-darken-4">${{p.price}}</span>
+          </div>
+          <div class="card-content">
+            <h5 class="">{{p.name}}<i class="material-icons right">more_vert</i></h5>
+            <hr>
+            <span class="" *ngIf="p.category == 1">En Venta</span>
+            <span class="" *ngIf="p.category == 2">En Renta</span>
+            <hr>
+            <span class="">Precio: ${{p.price}}</span>
+            <br>
+            <span class="">Direccion: {{p.direccion}}</span>
+            <br>
+            <span class="">Telefono: {{p.telefono}}</span>
+            <br><br>
+            <p><a routerLink="/solicitud/{{p.id}}" *ngIf="sessionCliente">Solicitar</a></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{p.name}}<i class="material-icons right">close</i></span>
+            <p>{{p.price | currency}}</p>
+          </div>
+        </div>
+  </div>
+
+  <div class="row center-align" *ngIf="!verr">
+    <h4>¡Hey!, Aún no tenemos propiedades con las caracteristicas que buscas!</h4>
 </div>
 
 
 
+
+<!--
 <div id="venta">
 <h3>En Venta:</h3>
 
@@ -70,3 +146,4 @@
 </div>
 
 </div>
+-->

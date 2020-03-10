@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from 'src/app/services/contact.service';
 import { Router } from '@angular/router';
+import { UserModel } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-contactform',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class ContactformComponent implements OnInit {
 
   fgValidation : FormGroup;
+  tempo: UserModel;
 
   constructor(private fb: FormBuilder, private cntService: ContactService, private router: Router) { }
 
@@ -38,12 +40,16 @@ export class ContactformComponent implements OnInit {
       let s = this.fg.subject.value;
       let m = this.fg.message.value;
       let e = this.fg.email.value;
-      this.cntService.enviarEmail(n,m,s,e).subscribe(data => {
-        if(data != null){
-          console.log(data);
-          this.router.navigate(['/home']);
-        }
-      })
+      this.cntService.obtenerEmail().subscribe(dat =>{
+        this.tempo = dat
+        this.cntService.enviarEmail(n,m,s,e, this.tempo.email).subscribe(data => {
+          if(data != null){
+            console.log(data);
+            this.router.navigate(['/home']);
+          }
+        })
+      });
+      
     }
   }
 

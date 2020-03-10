@@ -35,13 +35,47 @@ export class ProductService {
     
   }
 
-  updateProduct(product: ProductModel): Observable<ProductModel>{
-    return this.http.put<ProductModel>(`${base_url}Product`, product, 
+  updateProduct(id: String, telefono:String, name: String, aggregadoby:String, category:String, 
+    price:Number, tipo:String, ciudad:String, direccion:String, image:String): Observable<ProductModel>{
+    return this.http.put<ProductModel>(`${base_url}Products`, {
+      id : id,
+      telefono :telefono,
+      name : name,
+      aggregadoby :aggregadoby,
+      category:category,
+      price:price,
+      tipo:tipo,
+      ciudad:ciudad,
+      direccion:direccion,
+      image:image,
+      disponible:true
+    }, 
     {
       headers: new HttpHeaders({
         "content-type": "application/json"
       })
     });
+  }
+
+  editarProducto(id: String,telefono:String, name: String, aggregadoby:String, category:String, 
+    price:Number, tipo:String, ciudad:String, direccion:String, image:String ):Observable<ProductModel> {
+    return this.http.put<ProductModel>(`http://localhost:3000/api/Products`, {
+      id: id,
+      telefono :telefono,
+      name : name,
+      aggregadoby :aggregadoby,
+      category:category,
+      price:price,
+      tipo:tipo,
+      ciudad:ciudad,
+      direccion:direccion,
+      image:image,
+      disponible:true
+
+    }, {headers: new HttpHeaders ({
+      "content-type": "application/json"
+    })
+     })
   }
 
   deleteProduct(productId: ProductModel): Observable<ProductModel>{

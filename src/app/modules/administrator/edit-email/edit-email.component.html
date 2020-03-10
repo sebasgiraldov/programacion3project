@@ -1,0 +1,25 @@
+<div class="row center">
+    <div class="z-depth-3 y-depth-3 x-depth-3 grey green-text lighten-4 row"
+          style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px; margin-top: 100px; width: 60%;">
+          <h3 class="center-align">Editar Email de Contacto</h3>
+    <form [formGroup]="fgValidation" (ngSubmit)="registerEvent()" class="crear-form">
+      <div class="row">
+        <div class='input-field col s12'>
+          <input class="validate" formControlName="email" id="email" type="email"  placeholder="Nuevo Email" />
+          <div class="warning-validation" *ngIf="fg.email.errors && (fg.email.dirty || fg.email.touched)">
+              <strong *ngIf="fg.email.errors.required">
+                  email is required!<br />
+              </strong>
+              </div>
+          </div>
+        </div>
+        <div class='row'>
+            <div class='input-field col m12'>
+            <button  
+            class='btn green col s12' type="submit">Editar</button>
+            </div>
+          </div>
+        </form>
+    </div>
+            </div>
+        

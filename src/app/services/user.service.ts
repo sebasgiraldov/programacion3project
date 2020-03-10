@@ -24,6 +24,23 @@ export class UserService {
     return this.http.patch<UserModel>(`${base_url}Users/${id}`, user);
   }
 
+  cambiarCorreo(email: String): Observable<UserModel> {
+    return this.http.put<UserModel>(`${base_url}Users`, {
+      id: "5e67142c45ef7958e8c0cffb",
+      rol: 100,
+      realm: "none",
+      username: "none",
+      email: email,
+      emailVerified: false,
+      password: ""
+    }, 
+    {
+      headers: new HttpHeaders ({
+      "content-type": "application/json"
+    })
+     });
+  }
+
      //delete user
      deleteUser(userId: String): Observable<UserModel> {
       return this.http.delete<UserModel>(`${base_url}Users/${userId}`);

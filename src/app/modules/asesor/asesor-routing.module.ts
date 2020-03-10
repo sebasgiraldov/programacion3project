@@ -5,6 +5,7 @@ import { AuthenticationRequiredGuard } from 'src/app/helpers/guards/authenticati
 import { InicioComponent } from '../asesor/inicio/inicio.component';
 import { ListComponent } from './list/list.component';
 import { SoliComponent } from './soli/soli.component';
+import { EditarComponent } from './editar/editar.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,11 @@ const routes: Routes = [
   {
     path:'asesor/list',
     component: ListComponent,
+    canActivate: [AuthenticationRequiredGuard]
+  },
+  {
+    path:'asesor/edit/:id',
+    component: EditarComponent,
     canActivate: [AuthenticationRequiredGuard]
   },
   {

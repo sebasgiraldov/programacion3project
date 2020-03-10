@@ -11,9 +11,10 @@ import { InicioComponent } from './inicio/inicio.component';
 import { CrearCiudadComponent } from './crear-ciudad/crear-ciudad.component';
 import { CrearTipoComponent } from './crear-tipo/crear-tipo.component';
 import { ListaSolicitudesComponent } from './lista-solicitudes/lista-solicitudes.component';
+import { EditEmailComponent } from './edit-email/edit-email.component';
 
 @NgModule({
-  declarations: [AddAsesorComponent, TipoInmComponent, CiudadesDeptosComponent, InicioComponent, CrearCiudadComponent, CrearTipoComponent, ListaSolicitudesComponent],
+  declarations: [AddAsesorComponent, TipoInmComponent, CiudadesDeptosComponent, InicioComponent, CrearCiudadComponent, CrearTipoComponent, ListaSolicitudesComponent, EditEmailComponent],
   imports: [
     CommonModule,
     AdministratorRoutingModule,

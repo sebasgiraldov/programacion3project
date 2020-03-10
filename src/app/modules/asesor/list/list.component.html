@@ -94,7 +94,7 @@
             </div>
             <td>
                 <button class="btn waves-effect waves-light blue" type="button" name="action"
-                (click)="openConfirmation2(p.id)" *ngIf="p.disponible==true">Editar
+                routerLink="/asesor/edit/{{p.id}}" *ngIf="p.disponible==true">Editar
                 </button>
             </td>
             <td>
