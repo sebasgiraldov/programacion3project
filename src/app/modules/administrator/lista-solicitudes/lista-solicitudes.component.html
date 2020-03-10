@@ -1,3 +1,46 @@
+<div class="container">
+    <h1>Filtrar:</h1>
+    <form [formGroup]="fgValidation"  (ngSubmit)="filterEvent()" class="register-form"> 
+      <div class="row z-deepth-1">
+        <div class="col s4">
+          <h6>Seleccione la categoria:</h6>
+        <div class="center-align">
+          <select class="input-field col s12" formControlName="VarR">
+            
+            <option value="1">
+              Venta
+            </option>
+            <option value="2">
+              Arriendo
+            </option>
+          </select>
+        </div>
+        </div>
+        <div class="col s4">
+          <h6>Seleccione tipo de vivienda:</h6>
+        <div class="center-align">
+          <select class="input-field col s12" formControlName="HorA">
+            <option *ngFor="let p of tipos" value="{{p.nombre}}">
+              {{p.nombre}}
+            </option>
+          </select>
+          </div>
+        </div>
+        <div class="col s4">
+     
+        </div>
+        <div class="col s5"></div>
+        <div class="col s2">
+        <button class="btn waves-effect waves-light button1 green" type="submit">Filtrar</button>
+        </div>
+        <div class="col s5"></div>
+      </div>
+    </form>
+  </div>
+
+
+
+
 <div class="row" *ngIf="mostrar">
     <div class="col m2"></div>
     <div class="col m8">
