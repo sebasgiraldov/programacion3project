@@ -1,42 +1,28 @@
+<h3 class="center-align">Lista de solicitudes segun el cliente</h3>
+
 <div class="container">
     <h1>Filtrar:</h1>
     <form [formGroup]="fgValidation"  (ngSubmit)="filterEvent()" class="register-form"> 
       <div class="row z-deepth-1">
         <div class="col s4">
-          <h6>Seleccione la categoria:</h6>
+          <h6>Seleccione el id del cliente:</h6>
         <div class="center-align">
-          <select class="input-field col s12" formControlName="VarR">
-            
-            <option value="1">
-              Venta
-            </option>
-            <option value="2">
-              Arriendo
+          <select class="input-field col s12" formControlName="HorA" >
+            <option *ngFor="let p of clientes" value="{{p.id}}" >
+              {{p.id}}
             </option>
           </select>
         </div>
-        </div>
-        <div class="col s4">
-          <h6>Seleccione tipo de vivienda:</h6>
-        <div class="center-align">
-          <select class="input-field col s12" formControlName="HorA">
-            <option *ngFor="let p of tipos" value="{{p.nombre}}">
-              {{p.nombre}}
-            </option>
-          </select>
-          </div>
-        </div>
-        <div class="col s4">
-     
-        </div>
-        <div class="col s5"></div>
-        <div class="col s2">
+       
         <button class="btn waves-effect waves-light button1 green" type="submit">Filtrar</button>
         </div>
         <div class="col s5"></div>
       </div>
     </form>
   </div>
+
+
+
 
 
 
@@ -48,72 +34,37 @@
     <thead>
         <tr>
             <th style="width: 17%">
-                Codigo 
+                Id Cliente 
             </th>
             <th style="width: 17%">
-                Tipo Solicitud 
+                Id solicitud 
             </th>
             <th style="width: 17%">
-                Tipo inmueble
-            </th>
-            <th style="width: 17%">
-                Direccion
-            </th >
-            <th style="width: 17%">
-                Ciudad
-            </th >
-            <th style="width: 17%">
-                Estado
-            </th>
-            <th>
-                
+                Estado 
             </th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let p of solicitudes">
+        <tr *ngFor="let p of listaSol; trackBy: id_cliente">
+            <td>
+                {{p.id_cliente}}
+            </td>
             <td>
                 {{p.id}}
-            </td>
-            <td *ngIf="p.tipo_solicitud == 2">
-                Arrendamiento
-            </td>
-            <td *ngIf="p.tipo_solicitud == 1">
-                Compra
-           </td>
-            <td>
-                {{p.tipo_inmueble}}
-            </td>
-            <td>
-                {{p.direccion}}
-            </td>
-            <td>
-                {{p.ciudad}}
             </td>
             <td *ngIf="p.estado_solicitud == 1">
                 Enviado
             </td>
             <td *ngIf="p.estado_solicitud == 2">
-                En Estudio
+                En estudio
             </td>
             <td *ngIf="p.estado_solicitud == 3">
-                <button class="btn waves-effect waves-light green accent-3" type="button" name="action"
-                (click)="openComentarios(p.id)" *ngIf="p.estado_solicitud != 1">Aceptado
-                </button>
+                Aceptado
             </td>
             <td *ngIf="p.estado_solicitud == 4">
-                <button class="btn waves-effect waves-light  deep-orange lighten-2" type="button" name="action"
-                (click)="openComentarios(p.id)" *ngIf="p.estado_solicitud != 1 ">Rechazado
-                </button>
+                Rechazado
             </td>
-            <td>
-                <button class="btn waves-effect waves-light blue" type="button" name="action"
-                (click)="openConfirmation(p.id)" *ngIf="p.estado_solicitud == 1">Asignar
-                </button>
-                <button class="btn waves-effect waves-light green" type="button" name="action"
-                (click)="openDetalles(p.id)" *ngIf="p.estado_solicitud != 1">Detalles
-                </button>
-            </td>
+            
         </tr>
     </tbody>
 </table>

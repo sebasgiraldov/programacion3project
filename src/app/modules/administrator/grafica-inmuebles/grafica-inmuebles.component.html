@@ -1,0 +1,114 @@
+<div class="row">
+<div class="col m12">
+    <h3>Lista Propiedades</h3>
+<div class="col m1"></div>
+    <div class="col m10">
+<table class="responsive-table" >
+    <thead>
+        <tr>
+            <th style="width: 17%">
+                Telefono 
+            </th>
+            <th style="width: 17%">
+                Nombre
+            </th>
+            <th style="width: 17%">
+                 Categoria
+            </th >
+            <th>
+                Precio
+            </th>
+            <th>
+                Tipo
+            </th>
+            <th>
+                Ciudad
+            </th>
+            <th>
+                Direccion
+            </th>
+            <th style="width: 17%">
+                Disponible:
+            </th>
+            <th style="width: 17%">
+                Imagen
+            </th>
+            <th>
+                
+            </th>
+            <th>
+                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of productList">
+            <td>
+            {{p.telefono}}
+            </td>
+            <td>
+            {{p.name}}
+           </td>
+            <td *ngIf="p.category == 1">
+                Venta
+            </td>
+            <td *ngIf="p.category == 2">
+                Renta
+            </td>
+            <td>
+                {{p.price}}
+            </td>
+            <td>
+                {{p.tipo}}
+            </td>
+            <td>
+                {{p.ciudad}}
+            </td>
+            <td>
+                {{p.direccion}}
+            </td>
+            <td *ngIf="p.disponible == true">
+                Si
+            </td>
+            <td *ngIf="p.disponible == false">
+                No
+            </td>
+            <td>
+               <img [src]="p.image" (click)="openImage(p.image)" style="width: 80%;" alt="image" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div id="modalDetalles" class="modal">
+    <div class="modal-content center-align" *ngIf="producto != undefined">
+         <h4>{{producto.tipo}}</h4>
+        <br>
+        <h6>*Direccion: {{producto.direccion}}</h6>
+        <h6>*Valor: {{producto.price}}</h6>
+        <img src="{{producto.image}" alt="" width="40%" height="40%">
+        <br><br>
+        <a class="modal-close waves-effect waves-light btn red">Salir</a> &nbsp;
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<br>
+<h3>Estadisticas</h3>
+<div ng for ></div>
+<div>
+    <div>
+      <div style="display: block">
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      </div>
+     <!-- <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>-->
+    </div>
+  </div>

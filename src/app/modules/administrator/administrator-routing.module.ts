@@ -7,6 +7,9 @@ import { CrearCiudadComponent } from './crear-ciudad/crear-ciudad.component';
 import { CrearTipoComponent } from './crear-tipo/crear-tipo.component';
 import { ListaSolicitudesComponent } from './lista-solicitudes/lista-solicitudes.component';
 import { EditEmailComponent } from './edit-email/edit-email.component';
+import { ListClientesComponent } from './list-clientes/list-clientes.component';
+import { GraficasComponent } from './graficas/graficas.component';
+import { GraficaInmueblesComponent } from './grafica-inmuebles/grafica-inmuebles.component';
 
 const routes: Routes = [
   {
@@ -37,6 +40,21 @@ const routes: Routes = [
   {
     path:'admin/inicio/lista-solicitudes',
     component: ListaSolicitudesComponent,
+    canActivate: [AuthenticationRequiredGuard]
+  },
+  {
+    path:'admin/inicio/lista-clientes',
+    component: ListClientesComponent,
+    canActivate: [AuthenticationRequiredGuard]
+  },
+  {
+    path:'admin/inicio/grafica-inm',
+    component: GraficaInmueblesComponent,
+    canActivate: [AuthenticationRequiredGuard]
+  },
+  {
+    path:'admin/inicio/grafica',
+    component: GraficasComponent,
     canActivate: [AuthenticationRequiredGuard]
   }
 ];

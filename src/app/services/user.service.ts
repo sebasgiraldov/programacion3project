@@ -18,6 +18,10 @@ export class UserService {
     return this.http.get<UserModel>(`${base_url}Users/${id}`);
   }
 
+  getAllUsers() :Observable<UserModel[]>{
+    return this.http.get<UserModel[]>(`${base_url}Users/`);
+  }
+
   //edit editor
   updateUser(user: UserModel): Observable<UserModel> {
     let id = user.id;

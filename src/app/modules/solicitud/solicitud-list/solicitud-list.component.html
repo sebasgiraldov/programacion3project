@@ -127,7 +127,17 @@
         <h6>*{{solicitud.comentarios}}...</h6>
         <br>
         <br>
-        <a class="modal-close waves-effect waves-light btn blue" *ngIf="solicitud.comentarios != 'No hay comentarios'">Descargar</a>
+        <a class="modal-close waves-effect waves-light btn gray" *ngIf="solicitud.comentarios != 'No hay comentarios'">Descargar</a>
+        <br><br> <br>
+        <div class="file-field input-field" *ngIf="solicitud.estado_solicitud ==3">
+            <div class="btn">
+              <span>Cargar Archivos</span>
+              <input type="file">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+          </div>
     <br><br><br><br><br><br>
         <a class="modal-close waves-effect waves-light btn red">Salir</a> &nbsp;
         

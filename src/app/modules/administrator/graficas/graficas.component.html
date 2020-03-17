@@ -1,0 +1,111 @@
+
+<div class="row">
+<div class="col m12">
+    <h3>Lista solicitudes</h3>
+<div class="col m2"></div>
+<div class="col m8">
+<table class="responsive-table" >
+    <thead>
+        <tr >
+            <th style="width: 17%">
+                Tipo Solicitud 
+            </th>
+            <th style="width: 17%">
+                Tipo inmueble
+            </th>
+            <th style="width: 17%">
+                Direccion
+            </th >
+            <th style="width: 17%">
+                Ciudad
+            </th >
+            <th>
+                Valor
+            </th>
+            <th style="width: 17%">
+                Estado
+            </th>
+            <th style="width: 17%">
+                Imagen
+            </th>
+            <th>
+                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of solicitudes">
+            <td *ngIf="p.tipo_solicitud == 2">
+                Arrendamiento
+            </td>
+            <td *ngIf="p.tipo_solicitud == 1">
+                Compra
+           </td>
+            <td>
+                {{p.tipo_inmueble}}
+            </td>
+            <td>
+                {{p.direccion}}
+            </td>
+            <td>
+                {{p.ciudad}}
+            </td>
+            <td>
+                {{p.valor}}
+            </td>
+            <td *ngIf="p.estado_solicitud == 1">
+                Enviado
+            </td>
+            <td *ngIf="p.estado_solicitud == 2">
+                En Estudio
+            </td>
+            <td *ngIf="p.estado_solicitud == 3">
+                <button class="btn waves-effect waves-light green accent-3" type="button" name="action"
+                (click)="openComentarios(p.id)" *ngIf="p.estado_solicitud != 1">Aceptado
+                </button>
+            </td>
+            <td *ngIf="p.estado_solicitud == 4">
+                <button class="btn waves-effect waves-light  deep-orange lighten-2" type="button" name="action"
+                (click)="openComentarios(p.id)" *ngIf="p.estado_solicitud != 1 ">Rechazado
+                </button>
+            </td>
+            <td>
+               <img src="{{p.foto}}" (click)="openImage(p.foto)" style="width: 80%;" alt="image" />
+            </td>
+            <div id="modalImagen" class="modal" style="height: 80%;">
+                <div class="modal-content center-align">
+                    <h4>¡Esta esperando por ti!</h4>
+                    <img src="{{foto}}" style="width:70%; height: 70%; " alt="image" /> 
+                    <br>
+        <a class="modal-close waves-effect waves-light btn red">Salir</a> &nbsp;
+                </div>
+            </div>
+        </tr>
+    </tbody>
+</table>
+<a class="waves-effect waves-light btn green" href="http://localhost:4200/admin/inicio/lista-solicitudes">Ver Lista de solicitudes Filtradas</a>
+</div>
+</div>
+</div>
+
+
+<br>
+<br>
+<h3>Estadisticas</h3>
+<div ng for ></div>
+<div>
+    <div>
+      <div style="display: block">
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      </div>
+     <!-- <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>-->
+    </div>
+  </div>
+

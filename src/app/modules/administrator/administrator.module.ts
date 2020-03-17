@@ -12,15 +12,20 @@ import { CrearCiudadComponent } from './crear-ciudad/crear-ciudad.component';
 import { CrearTipoComponent } from './crear-tipo/crear-tipo.component';
 import { ListaSolicitudesComponent } from './lista-solicitudes/lista-solicitudes.component';
 import { EditEmailComponent } from './edit-email/edit-email.component';
+import { ListClientesComponent } from './list-clientes/list-clientes.component';
+import { GraficaInmueblesComponent } from './grafica-inmuebles/grafica-inmuebles.component';
+import { GraficasComponent } from './graficas/graficas.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
-  declarations: [AddAsesorComponent, TipoInmComponent, CiudadesDeptosComponent, InicioComponent, CrearCiudadComponent, CrearTipoComponent, ListaSolicitudesComponent, EditEmailComponent],
+  declarations: [AddAsesorComponent, TipoInmComponent, CiudadesDeptosComponent, InicioComponent, CrearCiudadComponent, CrearTipoComponent, ListaSolicitudesComponent, EditEmailComponent, ListClientesComponent, GraficaInmueblesComponent, GraficasComponent],
   imports: [
     CommonModule,
     AdministratorRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     RecaptchaModule,
+    ChartsModule
   ]
 })
 export class AdministratorModule { }

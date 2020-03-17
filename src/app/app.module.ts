@@ -11,6 +11,8 @@ import { PageNotFoundComponent } from './template/page-not-found/page-not-found.
 import { HttpClientModule } from '@angular/common/http';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ChartsModule } from 'ng2-charts';
+
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     HttpClientModule,
     RecaptchaModule,
     NgxSpinnerModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

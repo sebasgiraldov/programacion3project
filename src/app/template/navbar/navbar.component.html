@@ -10,7 +10,10 @@
         <li *ngIf="Asesor"><a routerLink="asesor/list">Lista Inmuebles</a></li>
         <li *ngIf="!Admin && !Asesor"><a routerLink="product/home">Propiedades</a></li>
         <li *ngIf="Cliente"><a routerLink="/solicitud-list">Solicitudes</a></li>
-        <li *ngIf="Admin"><a routerLink="admin/inicio/lista-solicitudes">Solicitudes</a></li>
+      <!--<li *ngIf="Admin"><a routerLink="admin/inicio/lista-solicitudes">Solicitudes</a></li>-->
+        <li *ngIf="Admin"><a routerLink="admin/inicio/lista-clientes">Clientes</a></li>
+        <li *ngIf="Admin"><a routerLink="admin/inicio/grafica-inm">Inmuebles</a></li>
+        <li *ngIf="Admin"><a routerLink="admin/inicio/grafica">Solicitudes</a></li>
         <li *ngIf="Admin"><a routerLink="admin/inicio/crear-asesor">Crear Asesor</a></li>
         <li *ngIf="Admin"><a routerLink="admin/inicio/crear-ciudad">Crear Ciudad</a></li>
         <li *ngIf="Admin"><a routerLink="admin/inicio/crear-tipo">Crear Tipo</a></li>
@@ -30,6 +33,7 @@
     <li *ngIf="Asesor"><a routerLink="asesor/list">Lista Inmuebles</a></li>
     <li *ngIf="!Admin && !Asesor"><a routerLink="product/home">Propiedades</a></li>
     <li *ngIf="Cliente"><a routerLink="/solicitud-list">Solicitudes</a></li>
+    <li *ngIf="Admin"><a routerLink="admin/inicio/lista-clientes">Clientes</a></li>
     <li *ngIf="Admin"><a routerLink="admin/inicio/lista-solicitudes">Solicitudes</a></li>
     <li *ngIf="Admin"><a routerLink="admin/inicio/crear-asesor">Crear Asesor</a></li>
     <li *ngIf="Admin"><a routerLink="admin/inicio/crear-ciudad">Crear Ciudad</a></li>
